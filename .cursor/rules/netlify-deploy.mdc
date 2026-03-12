@@ -1,0 +1,45 @@
+---
+description: Netlify deployment setup for all websites
+alwaysApply: true
+---
+
+# Netlify Deployment Standard
+
+All websites must use this Netlify setup for consistent deployment via `netlify deploy --prod`.
+
+## next.config.js / next.config.ts
+
+- Add `eslint: { ignoreDuringBuilds: true }` so lint warnings don't fail the build
+- Do NOT use `output: "export"` – use full Next.js runtime (Netlify OpenNext handles it)
+- Do NOT use `output: "standalone"` – that's for Vercel/Docker
+
+```js
+// next.config.js
+const nextConfig = {
+  eslint: { ignoreDuringBuilds: true },
+};
+```
+
+## netlify.toml
+
+```toml
+[build]
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Netlify auto-detects Next.js and uses OpenNext - no publish/functions config needed
+```
+
+- Do NOT set `publish` – Netlify auto-handles Next.js output
+- Do NOT add `[[plugins]]` – OpenNext is applied automatically
+
+## Deploy
+
+```bash
+npm run build
+netlify deploy --prod
+```
+
+When prompted, choose **Create & configure a new project** or link to an existing site.
