@@ -7,6 +7,10 @@ import { AuthErrorHandler } from "@/components/auth-error-handler";
 const cinzel = Cinzel({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
   title: "The Luxe Bus | Luxury Group Transportation | Southern California",
   description:
     "2025 Mercedes Sprinter luxury party bus for all your transportation needs. Airport transfers, events, parties, wine tours & more. Servicing Southern California.",
