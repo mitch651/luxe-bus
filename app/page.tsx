@@ -7,13 +7,11 @@ import InstagramSection from "@/components/instagram-section";
 import TikTokSection from "@/components/tiktok-section";
 import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
-import { getHomepageHeroContent } from "@/lib/homepage";
 
-export default async function HomePage() {
-  const heroContent = await getHomepageHeroContent();
+export default function HomePage() {
   return (
     <main className="bg-[#0a0a0a]">
-      <Hero content={heroContent} />
+      <Hero />
       <TripBooker />
       <FleetSection />
       <ServicesSection />
